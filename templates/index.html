@@ -1,0 +1,32 @@
+{% extends "base.html" %} 
+
+{% block content %}
+<script>
+    window.onload = function() {
+        document.getElementById("userInput").focus();
+    } 
+</script>
+
+<div>
+    <h2>끝말잇기 게임</h2>
+    <form method="POST">
+        {% if result %}
+        <p style="font-size: 50px;">{{result}}</p>
+            {% if last %}
+            <p style="font-size: 30px;">" {{last}} "으로/로 시작하는 단어를 입력하세요.</p>
+            {% endif %}
+        {% endif %}
+        <input 
+            type="text" 
+            name="userInput" 
+            id="userInput" 
+            maxlength="10" 
+            pattern="[가-힣]+" 
+            title="한글만 입력해주세요." 
+            required></input>
+        {% if result == "땡" %}
+        <button value="true">다시하기</button>
+        {% endif %}
+    </form>
+</div>
+{% endblock %}
